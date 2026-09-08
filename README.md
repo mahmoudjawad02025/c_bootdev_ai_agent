@@ -1,11 +1,16 @@
-> [!IMPORTANT]
-> The folder structure could be enhanced, but it was kept as-is so checks on the Boot.dev site continue to pass safely.
-
 # 🤖 Boot.dev AI Agent
 
 CLI app that sends a user prompt to an LLM on [OpenRouter](https://openrouter.ai/). The model may request any of four local tools (list directory, read file, write file, run Python). Path arguments to those tools are checked against `./calculator`.
 
+
+> [!IMPORTANT]
+> The folder structure could be enhanced, but it was kept as-is so checks on the Boot.dev site continue to pass safely.
+
+<br>
+
 ---
+
+<br>
 
 ## 📑 Table of Contents
 
@@ -20,8 +25,11 @@ CLI app that sends a user prompt to an LLM on [OpenRouter](https://openrouter.ai
 - [License](#-license)
 - [Contact](#-contact)
 
+<br>
 
 ---
+
+<br>
 
 ## ✨ What it does
 
@@ -32,7 +40,11 @@ CLI app that sends a user prompt to an LLM on [OpenRouter](https://openrouter.ai
 - Each tool returns an error string if the target path resolves outside that working directory
 - On every tool call, prints the function name; with `--verbose`, prints name + arguments, prints each tool result, and on the final text reply also prints the user prompt and prompt/response token counts
 
+<br>
+
 ---
+
+<br>
 
 ## 📋 Requirements
 
@@ -41,7 +53,11 @@ CLI app that sends a user prompt to an LLM on [OpenRouter](https://openrouter.ai
 
 Dependencies listed in `pyproject.toml`: `openai==2.44.0`, `python-dotenv==1.1.0`.
 
+<br>
+
 ---
+
+<br>
 
 ## ⚙️ Setup
 
@@ -60,7 +76,11 @@ cp .env.example .env
 OPENROUTER_API_KEY=your_key_here
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## 🚀 Usage
 
@@ -71,7 +91,11 @@ uv run main.py --verbose "your prompt here"
 
 Whether tools run depends on the model response. Tool path arguments are relative to the working directory `./calculator` (so `main.py` is `./calculator/main.py` when the process cwd is the repo root).
 
+<br>
+
 ---
+
+<br>
 
 ## 🧠 How it works
 
@@ -87,7 +111,11 @@ Whether tools run depends on the model response. Tool path arguments are relativ
 | `write_file` | Writes/overwrites text (`"w"`); calls `os.makedirs(..., exist_ok=True)` on the parent path |
 | `run_python_file` | Requires a `.py` path; runs `["python", <file>, ...args]` with `cwd` = working dir, `timeout=30`; returns stdout/stderr (and exit code if non-zero) |
 
+<br>
+
 ---
+
+<br>
 
 ## 📁 Project layout
 
@@ -104,7 +132,11 @@ bootdev_ai_agent/
 └── uv.lock
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## 🧪 Testing & Verification
 
@@ -117,7 +149,11 @@ uv run test_write_file.py
 uv run test_run_python_file.py
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## ❓ Troubleshooting
 
@@ -127,13 +163,21 @@ uv run test_run_python_file.py
 | `Error: Cannot access ... as it is outside the working directory` | Path validation security trigger | Target paths inside `./calculator` (or paths relative to it) |
 | Model picks wrong tool | Ambiguous system prompt or tool description | Refine function description schemas in `functions/` or system prompt in `prompts.py` |
 
+<br>
+
 ---
+
+<br>
 
 ## 📜 License
 
 Distributed under the MIT License. See `LICENSE` for details.
 
+<br>
+
 ---
+
+<br>
 
 ## 📞 Contact
 
