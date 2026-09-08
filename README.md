@@ -64,8 +64,8 @@ Dependencies listed in `pyproject.toml`: `openai==2.44.0`, `python-dotenv==1.1.0
 This repo has a `uv.lock`. Using [uv](https://github.com/astral-sh/uv):
 
 ```bash
-git clone <your-repo-url>
-cd bootdev_ai_agent
+git clone [https://github.com/mahmoudjawad02025/c_bootdev_ai_agent.git](https://github.com/mahmoudjawad02025/c_bootdev_ai_agent.git)
+cd c_bootdev_ai_agent
 uv sync
 cp .env.example .env
 ```
