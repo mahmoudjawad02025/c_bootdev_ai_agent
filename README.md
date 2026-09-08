@@ -15,6 +15,11 @@ CLI app that sends a user prompt to an LLM on [OpenRouter](https://openrouter.ai
 - [Usage](#-usage)
 - [How it works](#-how-it-works)
 - [Project layout](#-project-layout)
+- [Testing & Verification](#-testing--verification)
+- [Troubleshooting](#-troubleshooting)
+- [License](#-license)
+- [Contact](#-contact)
+
 
 ---
 
@@ -98,3 +103,40 @@ bootdev_ai_agent/
 ├── pyproject.toml
 └── uv.lock
 ```
+
+---
+
+## 🧪 Testing & Verification
+
+Run the root unit tests directly to verify tool validation and execution logic:
+
+```bash
+uv run test_get_files_info.py
+uv run test_get_file_content.py
+uv run test_write_file.py
+uv run test_run_python_file.py
+```
+
+---
+
+## ❓ Troubleshooting
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| `RuntimeError: api_key is None !` | Missing or unpopulated `.env` file | Ensure `.env` exists in the repo root and contains `OPENROUTER_API_KEY=your_key` |
+| `Error: Cannot access ... as it is outside the working directory` | Path validation security trigger | Target paths inside `./calculator` (or paths relative to it) |
+| Model picks wrong tool | Ambiguous system prompt or tool description | Refine function description schemas in `functions/` or system prompt in `prompts.py` |
+
+---
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for details.
+
+---
+
+## 📞 Contact
+
+- 📧 **Email**: [mahmoudjawad02025@gmail.com](mailto:mahmoudjawad02025@gmail.com)
+- 💻 **GitHub Profile**: [@mahmoudjawad02025](https://github.com/mahmoudjawad02025/)
+- 💼 **LinkedIn:** [linkedin.com/in/mahmoud-abu-alsebaa](https://linkedin.com/in/mahmoud-abu-alsebaa)
