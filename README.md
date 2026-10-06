@@ -112,7 +112,7 @@ Whether tools run depends on the model response. Tool path arguments are relativ
 | `write_file` | Writes/overwrites text (`"w"`); calls `os.makedirs(..., exist_ok=True)` on the parent path |
 | `run_python_file` | Requires a `.py` path; runs `["python", <file>, ...args]` with `cwd` = working dir, `timeout=30`; returns stdout/stderr (and exit code if non-zero) |
 
-Safe by design: every file path is validated against ./calculator, and run_python_file has a 30-second timeout.
+Path-restricted: file paths are validated against ./calculator, and run_python_file has a 30-second timeout.
 
 <br>
 
