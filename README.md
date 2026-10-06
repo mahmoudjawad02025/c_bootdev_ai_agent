@@ -1,6 +1,7 @@
 # 🤖 Boot.dev AI Agent
 
 CLI app that sends a user prompt to an LLM on [OpenRouter](https://openrouter.ai/). The model may request any of four local tools (list directory, read file, write file, run Python). Path arguments to those tools are checked against `./calculator`.
+It's an extensible tool-calling agent: each tool is its own module with a schema, so adding a new tool means adding one function and one schema.
 
 
 > [!IMPORTANT]
@@ -111,6 +112,8 @@ Whether tools run depends on the model response. Tool path arguments are relativ
 | `write_file` | Writes/overwrites text (`"w"`); calls `os.makedirs(..., exist_ok=True)` on the parent path |
 | `run_python_file` | Requires a `.py` path; runs `["python", <file>, ...args]` with `cwd` = working dir, `timeout=30`; returns stdout/stderr (and exit code if non-zero) |
 
+Safe by design: every file path is validated against ./calculator, and run_python_file has a 30-second timeout.
+
 <br>
 
 ---
@@ -131,6 +134,7 @@ bootdev_ai_agent/
 ├── pyproject.toml
 └── uv.lock
 ```
+Tools live in functions/, separate from the API loop in main.py, which keeps the agent clean and modular.
 
 <br>
 
